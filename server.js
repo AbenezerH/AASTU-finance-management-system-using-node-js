@@ -84,13 +84,55 @@ app.get('/login',(req,res) =>{
 })
 
 
+// app.post('/login',(req,res) => {
+
+//     var email = req.body.lemail;
+//    // console.log(email);
+    
+//     var password = req.body.lpass;
+//     con.query('SELECT * FROM users WHERE email = ?', [email], function (error, results, fields) {
+//         if (error) {
+//             // console.log("error ocurred",error);
+//             res.send({
+//                 "code": 400,
+//                 "failed": "error ocurred"
+//             })
+//         } else {
+//             // console.log('The solution is: ', results);
+//             // future date creation
+//             //var date2 = new Date((new Date()).getTime() + (2 * (30 * 86400000)))
+           
+            
+//             if (results.length > 0) {
+//                 if (results[0].pass == password) {
+//                     req.session.user = "yes";
+//                     req.session.admin = true;
+//                     res.redirect('/index');
+//                 }
+//                 else {
+//                     var id = "password not match";
+//                     res.redirect('/notifi/' + id);
+
+//                   }
+//             }
+//             else {
+//                 var id = "username does not exist";
+//                 res.redirect('/notifi/' + id);
+//             }
+//         }
+//     });
+
+// });
+
+
+// start editing the login database connection
 app.post('/login',(req,res) => {
 
-    var email = req.body.lemail;
+    var password = req.body.lemail;
    // console.log(email);
     
     var password = req.body.lpass;
-    con.query('SELECT * FROM users WHERE email = ?', [email], function (error, results, fields) {
+    con2.query('SELECT * FROM users WHERE username = ?', [password], function (error, results, fields) {
         if (error) {
             // console.log("error ocurred",error);
             res.send({
@@ -104,13 +146,13 @@ app.post('/login',(req,res) => {
            
             
             if (results.length > 0) {
-                if (results[0].pass == password) {
+                if (results[0].password == password) {
                     req.session.user = "yes";
                     req.session.admin = true;
                     res.redirect('/index');
                 }
                 else {
-                    var id = "password not match";
+                    var id = "username does not exist";
                     res.redirect('/notifi/' + id);
 
                   }
@@ -123,7 +165,9 @@ app.post('/login',(req,res) => {
     });
 
 });
-             
+
+
+
 // render notifi
 app.get('/notifi/:id',(req,res)=>{
     var id  = req.params.id;
