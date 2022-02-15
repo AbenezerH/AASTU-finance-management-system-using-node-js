@@ -995,6 +995,33 @@ app.get('/loan_search/:id', function (req, res) {
     })
 
 })
+
+
+// search for the outgoing
+app.post('/search3', function (req, res) {
+    var id = req.body.search;
+    //console.log(did);
+    res.redirect("/outgoing_search/ " + id);
+
+})
+app.get('/outgoing_search/:id', function (req, res) {
+    var id = req.params.id;
+    //console.log(id);
+    con2.query(`SELECT * FROM outgoing where ID = ${id}`, function (error, results) {
+        if (error) {
+            res.send(error)
+        }
+        else {
+
+            obj2 = { print: results };
+            res.render('outgoing_search.ejs', obj2);
+        }
+
+    })
+
+})
+
+
 //profile of the customer
 app.get('/profile/:id',function (req,res) {
      var id  = req.params.id;
