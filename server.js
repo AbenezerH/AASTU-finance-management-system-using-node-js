@@ -108,7 +108,7 @@ app.post('/login',(req,res) => {
                   }
             }
             else {
-                var id = "email not exits";
+                var id = "username does not exist";
                 res.redirect('/notifi/' + id);
             }
         }
