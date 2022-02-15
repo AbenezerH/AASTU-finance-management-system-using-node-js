@@ -461,7 +461,6 @@ app.post('/scheme_action', auth, (req, res) => {
 
 // new delete the outgoing entry
 
-
 app.get('/delete_scheme/:id', auth, (req, res) => {
     // sending all data as object
 
@@ -926,13 +925,13 @@ app.post('/forgot', (req, res) => {
     var father = req.body.father;
     var like = req.body.like;
    
-    con.query(`select pass from users where father_name = '${father}' and likee  = '${like}'`, function (error, results) {
-        if (error){
-            res.send(error);
-        }
-        var pass = results[0].pass;
-        res.send("Your Password was " +pass)
-    })
+    // con.query(`select pass from users where father_name = '${father}' and likee  = '${like}'`, function (error, results) {
+    //     if (error){
+    //         res.send(error);
+    //     }
+    //     var pass = results[0].pass;
+    //     res.send("Your Password was " +pass)
+    // })
 })
 
 // header
