@@ -103,7 +103,7 @@
                     <th scope="col">Reason</th>
                     <th scope="col">Action</th>
                     <th scope="col">
-                        <a href="/scheme"  class="btn btn-secondary"</a>Add</a>
+                        <a href="/incoming"  class="btn btn-secondary"</a>Add</a>
                     </th>
                     <th></th>
                 </tr>
@@ -112,11 +112,11 @@
 
                 <% print.forEach(function (user) { %>
                 <tr>
-                    <td><%= user.scheme_id %></td>
-                    <td><%= user.cus_name %></td>
-                    <td><%= user.amount %></td>
-                    <td><%= user.date %></td>
-                    <td><%= user.amount %></td>
+                    <td><%= user.ID %></td>
+                    <td><%= user.Receivedfrom %></td>
+                    <td><%= user.Amount %></td>
+                    <td><%= user.Date %></td>
+                    <td><%= user.Reason %></td>
 
                     <td>
                         <a href="/installment2/<%=user.cus_id %>" class="btn btn-primary"
