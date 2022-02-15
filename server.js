@@ -758,6 +758,48 @@ app.get("/view_loan", auth, (req, res) => {
 
 });
 
+// // render balance module
+// app.get('/balance', auth, (req, res) => {
+//     res.render('balance.ejs');
+// })
+
+// balance displays 
+app.get('/balance', auth, (req,res) => {
+
+    let obj5 ={};
+    
+    con2.query(`SELECT ID, Amount FROM incoming`, function (error, results) {
+        if (error) {
+            res.send(error);
+            console.log('ERror ERror');
+        }
+        else {
+            console.log(results);
+            
+            obj5 = { print: results };
+            res.render('balance.ejs', obj5);
+        }
+
+    })
+
+
+    con2.query(`SELECT ID, Amount FROM outgoing`, function (error, results) {
+        if (error) {
+            res.send(error);
+            console.log('ERror ERror');
+        }
+        else {
+            console.log(results);
+            
+            obj5 = { print: results };
+            res.render('balance.ejs', obj5);
+        }
+
+    })
+
+    
+})
+
 
 //render installment module
 app.get('/installment', auth,function (req,res) {
