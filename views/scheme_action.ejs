@@ -27,33 +27,28 @@
         <form action="/scheme_action" method="POST" class="p-5">
             <div class="form-group ">
                 <label for="name">ID</label>
-                <input type="text" class="form-control" id="id" name="id" value=" <%=print[0].scheme_id%>" readonly>
+                <input type="text" class="form-control" id="id" name="id" value=" <%=print[0].ID%>" readonly>
             </div>
             <div class="form-group ">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value=" <%=print[0].name%> " required>
+                <label for="name">Payment made to</label>
+                <input type="text" class="form-control" id="name" name="name" value=" <%=print[0].Madeto%> " required>
 
             </div>
             <div class="form-group ">
                 <label for="text">Amount</label>
-                <input type="text" class="form-control" id="Amount" name="Amount" value=" <%=print[0].amount%> "
+                <input type="text" class="form-control" id="Amount" name="Amount" value=" <%=print[0].Amount%> "
                     required>
 
             </div>
             <div class="form-group">
-                <label for="text">Required Asset</label>
-                <input type="text" class="form-control" id="r_asset" name="r_asset" value=" <%=print[0].r_asset%> "
+                <label for="text">Date</label>
+                <input type="text" class="form-control" id="r_asset" name="r_asset" value=" <%=print[0].Date%> "
                     required>
             </div>
             <div class="form-group">
-                <label for="text">Number Of Installment</label>
+                <label for="text">Reason</label>
                 <input type="text" class="form-control" id="Installment"  name="Installment"
-                    value=" <%=print[0].no_installment%> " required>
-            </div>
-            <div class="form-group">
-                <label for="text">Duration</label>
-                <input type="text" class="form-control" id="Duration"  name="Duration"
-                    value=" <%=print[0].duration%> " required>
+                    value=" <%=print[0].Reason%> " required>
             </div>
             
             <!-- <div class="form-group">

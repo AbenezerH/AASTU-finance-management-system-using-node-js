@@ -414,7 +414,35 @@ app.get("/view_scheme", auth, (req, res) => {
 
 
 
-// send data from database to scheme_action page
+// // send data from database to scheme_action page
+// app.get('/scheme_action/:id', auth, function (req, res) {
+
+//     // console.log(req.params.id);
+//     let Id = req.params.id;
+//     if (req.params.id) {
+//         var customerEdit = {}
+//         var dropdown = {};
+//         con.query(`SELECT * FROM scheme WHERE scheme_id = ${Id}`, function (error, result) {
+
+//             if (error) {
+//                 throw error;
+//             } else {
+
+//                 // customerEdit = results;
+//                 //console.log(result[0].RowDataPacket); 
+//                 schemeEdit = { print: result };
+//                 //console.log(customerEdit.print[0].cus_name);
+
+//                 res.render('scheme_action.ejs', schemeEdit)
+
+//             }
+//         })
+
+//     }
+// })
+
+
+// edit the edit btn in the scheme_action/
 app.get('/scheme_action/:id', auth, function (req, res) {
 
     // console.log(req.params.id);
@@ -422,7 +450,7 @@ app.get('/scheme_action/:id', auth, function (req, res) {
     if (req.params.id) {
         var customerEdit = {}
         var dropdown = {};
-        con.query(`SELECT * FROM scheme WHERE scheme_id = ${Id}`, function (error, result) {
+        con2.query(`SELECT * FROM outgoing WHERE ID = ${Id}`, function (error, result) {
 
             if (error) {
                 throw error;
@@ -440,6 +468,8 @@ app.get('/scheme_action/:id', auth, function (req, res) {
 
     }
 })
+
+
 
 // send updated data from scheme_action to database
 app.post('/scheme_action', auth, (req, res) => {
