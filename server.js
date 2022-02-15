@@ -458,45 +458,38 @@ app.post('/scheme_action', auth, (req, res) => {
     })
 })
 
-// delete scheme 
+
+// new delete the outgoing entry
+
 
 app.get('/delete_scheme/:id', auth, (req, res) => {
     // sending all data as object
 
-    var did = req.params.id;
-    console.log(did);
+    var delid = req.params.id;
     
     // console.log(did);
-    con.query(`select * from loan_info where scheme_id = ${did}`, function (error, results) {
+    con2.query(`select * from outgoing where ID = ${delid}`, function (error, results) {
         if (error) {
             throw error;
         }
         else {
-            if(results.length > 0 )
-            {
-                res.send('Can not delete. This scheme is active')
-               
-            }
-            else{
-                con.query(`delete from scheme where scheme_id = ${did}`, function (error, results) {
-                    if (error) {
-                        throw error;
-                    }
-                    else {
-                        // window.alert("Deleted Successfully")
-                        res.redirect("/view_scheme")
-                    }
 
+            con2.query(`delete from outgoing where ID = ${delid}`, function (error, results) {
+                if (error) {
+                    throw error;
+                }
+                else {
+                    // window.alert("Deleted Successfully")
+                    res.redirect("/view_scheme")
+                }
+            })
 
-                })
-
-            }
-            
         }
-
     
     })
 })
+
+
 
 
 // view customer details in table 
