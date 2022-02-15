@@ -24,7 +24,7 @@
 <body>
     <!-- nav bar  -->
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand text-info" href="#">MicroVest</a>
+    <a class="navbar-brand text-info" href="#">AASTU</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
                     <i class="fa fa-envelope-o">
                         <!-- <span class="badge badge-danger">11</span> -->
                     </i>
-                    Schemes
+                    Out Going
                 </a>
             </li>
             <li class="nav-item">
@@ -52,7 +52,7 @@
                     <i class="fa fa-globe">
                         <!-- <span class="badge badge-success">11</span> -->
                     </i>
-                    Loans
+                    In Coming
                 </a>
             </li>
             <li class="nav-item">
@@ -87,7 +87,7 @@
                 <div class="input-group">
         
                     <!-- Search form -->
-                    <input class="form-control  search" type="number" id="search" name="search" placeholder="Search Customer ID"
+                    <input class="form-control  search" type="number" id="search" name="search" placeholder="Search"
                         aria-label="Search">
                     <!-- <button type="submit" class="btn btn-primary">Search</button> -->
                 </div>
@@ -96,18 +96,15 @@
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                        <th scope="col">Customer ID</th>
-                    <th scope="col">Scheme ID</th>
-             
-                    <th scope="col">Name</th>
-                    <th scope="col">Scheme</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Payment Received from</th>
                     <th scope="col">Amount</th>
-                    <th scope="col">Remaining Amount</th>
-                    <th scope="col">Number of installment</th>
-                    <th scope="col">Remaining Installment</th>
-                    <th scope="col">Installment Amount</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Reason</th>
                     <th scope="col">Action</th>
+                    <th scope="col">
+                        <a href="/scheme"  class="btn btn-secondary"</a>Add</a>
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -115,17 +112,12 @@
 
                 <% print.forEach(function (user) { %>
                 <tr>
-                    <td><%= user.cus_id %></td>
                     <td><%= user.scheme_id %></td>
-                    
                     <td><%= user.cus_name %></td>
-                    <td><%= user.name %></td>
                     <td><%= user.amount %></td>
-                    <td><%= user.remaining_amount %></td>
-                    <td><%= user.no_installment %></td>
-                    <td><%= user.installment_remaining %></td>
-                    <td><%= user.installment_amount %></td>
                     <td><%= user.date %></td>
+                    <td><%= user.amount %></td>
+
                     <td>
                         <a href="/installment2/<%=user.cus_id %>" class="btn btn-primary"
                             <% var id  = user.cus_id %></a>Pay</a>

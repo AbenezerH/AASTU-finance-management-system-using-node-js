@@ -72,11 +72,11 @@
 <!------ Include the above in your HEAD tag ---------->
 <link rel="stylesheet" href="/css/register.css">
 <script src="/js/register.js"></script>
-<h4 style="text-align: center; color:#17A2B8;" class="p-4 bg-white">Add Scheme</h4>
+<h4 style="text-align: center; color:#17A2B8;" class="p-4 bg-white">Add Out-Going payments</h4>
 <form action="/scheme" method="POST">
   
     <label>
-        <p class="label-txt">SCHEME NAME</p>
+        <p class="label-txt">PAYMENTS MADE TO</p>
         <input type="text" id="name" name="name" class="input">
         <div class="line-box">
             <div class="line"></div>
@@ -91,31 +91,8 @@
         </div>
     </label>
     <label>
-        <p class="label-txt">REQUIRED ASSET</p>
+        <p class="label-txt">REASON</p>
         <input type="text" name="r_asset" id="r_asset" class="input">
-        <div class="line-box">
-            <div class="line"></div>
-        </div>
-    </label>
-    <label>
-        <div class="form-group">
-            <select name="Duration" class="form-control" id="Duration" required>
-                <option readonly value="">Select Duration-Type</option>
-        
-        
-        
-        
-                <option value="week" id="month">Week</option>
-                <option id="month" value="month">Month</option>
-        
-        
-        
-            </select>
-        </div>
-    </label>
-    <label>
-        <p class="label-txt">NO OF INSTALLMENTS</p>
-        <input type="text" id="instl" name="instl" class="input">
         <div class="line-box">
             <div class="line"></div>
         </div>
@@ -123,7 +100,8 @@
 
     
     </div>
-    <button type="submit">submit</button>
+    <button type="submit" class="btn btn-submit">submit</button>
+    <button type="button" onclick="window.history.go(-1); return false;" class="btn btn-close">cancel</button>
 
 
 
