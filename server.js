@@ -521,6 +521,8 @@ app.get("/cus_view", auth, (req,res) => {
 
 
 
+// 
+
 
 // sending data from database to customer edit form
 app.get('/action/:id', auth, function (req, res) {
@@ -628,12 +630,44 @@ app.get('/info/:sid/:cid', auth,(req,res)=>{
 // get customer name
 
 
+// // send data from database to the table of view_loan
+// app.get("/view_loan", auth, (req, res) => {
+//     //   res.render('cus_view.ejs')
+//     var obj3 = {};
+//     var customer ={};
+//     con.query('SELECT customer.cus_id, customer.cus_name, scheme.scheme_id, scheme.name, scheme.amount, scheme.no_installment, loan_info.remaining_amount, loan_info.installment_remaining,loan_info.installment_amount,loan_info.date FROM((scheme INNER JOIN customer ON scheme.scheme_id = customer.scheme_id) INNER JOIN loan_info ON customer.cus_id = loan_info.cus_id)', function (err, result) {
+
+//         if (err) {
+//             throw err;
+//         } else {
+//        // console.log(result);
+//             obj3 = { print: result };
+//             res.render('view_loan.ejs', obj3);
+//         }
+//         // con.query('select * from customer',function (error,results,fields) {
+//         //     if(error) {
+//         //         res.send(error);
+//         //     }
+//         //     else{
+//         //         obj3 = { print1: result };
+//         //         res.render('view_loan.ejs', obj3);
+//         //     }
+            
+//         // })
+//     });
+
+
+// });
+
+
+// view loan/incoming table connect to database
+
 // send data from database to the table of view_loan
 app.get("/view_loan", auth, (req, res) => {
-    //   res.render('cus_view.ejs')
+
     var obj3 = {};
     var customer ={};
-    con.query('SELECT customer.cus_id, customer.cus_name, scheme.scheme_id, scheme.name, scheme.amount, scheme.no_installment, loan_info.remaining_amount, loan_info.installment_remaining,loan_info.installment_amount,loan_info.date FROM((scheme INNER JOIN customer ON scheme.scheme_id = customer.scheme_id) INNER JOIN loan_info ON customer.cus_id = loan_info.cus_id)', function (err, result) {
+    con2.query('SELECT * FROM incoming', function (err, result) {
 
         if (err) {
             throw err;
@@ -656,6 +690,7 @@ app.get("/view_loan", auth, (req, res) => {
 
 
 });
+
 
 //render installment module
 app.get('/installment', auth,function (req,res) {
