@@ -443,7 +443,7 @@ app.get('/incoming', auth, (req, res) => {
 });
 
 
-// edit the edit btn in the scheme_action/
+// edit the edit btn in the scheme_action/outgoing
 app.get('/scheme_action/:id', auth, function (req, res) {
 
     // console.log(req.params.id);
@@ -472,7 +472,7 @@ app.get('/scheme_action/:id', auth, function (req, res) {
 
 
 
-// send updated data from scheme_action once the update button is pressed to database
+// send updated data from scheme_action/outgoing once the update button is pressed to database
 app.post('/scheme_action', auth, (req, res) => {
     // sending all data as object
 
@@ -485,6 +485,53 @@ app.post('/scheme_action', auth, (req, res) => {
     con2.query(`UPDATE outgoing SET Madeto = '${madeto}', Amount = '${amount}', Date = '${date}', Reason = '${reason}' WHERE ID = ${id}`, function (error, results) {
         if (error) throw res.send(error);
         res.redirect("/view_scheme");
+    })
+})
+
+
+
+// edit button for the incoming leading to incoming_action
+app.get('/incoming_action/:id', auth, function (req, res) {
+
+    // console.log(req.params.id);
+    let Id = req.params.id;
+    if (req.params.id) {
+        var customerEdit = {}
+        var dropdown = {};
+        con2.query(`SELECT * FROM incoming WHERE ID = ${Id}`, function (error, result) {
+
+            if (error) {
+                throw error;
+            } else {
+
+                // customerEdit = results;
+                //console.log(result[0].RowDataPacket); 
+                schemeEdit = { print: result };
+                //console.log(customerEdit.print[0].cus_name);
+
+                res.render('incoming_action.ejs', schemeEdit)
+
+            }
+        })
+
+    }
+})
+
+
+
+// send updated data from incoming_action once the update button is pressed, to database
+app.post('/incoming_action', auth, (req, res) => {
+    // sending all data as object
+
+    var id = req.body.id;
+    var Receivedfrom = req.body.name;
+    var amount = req.body.Amount;
+    var date = dateFormat(req.body.r_asset, "yyyy-mm-dd h:MM:ss");
+    var reason =  req.body.Installment;
+
+    con2.query(`UPDATE incoming SET Receivedfrom = '${Receivedfrom}', Amount = '${amount}', Date = '${date}', Reason = '${reason}' WHERE ID = ${id}`, function (error, results) {
+        if (error) throw res.send(error);
+        res.redirect("/view_loan");
     })
 })
 
