@@ -982,7 +982,7 @@ app.post('/search2', function (req, res) {
 app.get('/loan_search/:id', function (req, res) {
     var id = req.params.id;
     //console.log(id);
-    con.query(`SELECT customer.cus_id, customer.cus_name, customer.scheme_id, customer.scheme_name, customer.scheme_amount, loan_info.installment_no, loan_info.remaining_amount, loan_info.installment_remaining,loan_info.installment_amount,loan_info.date FROM customer INNER JOIN loan_info ON customer.cus_id = loan_info.cus_id where customer.cus_id = ${id}`, function (error, results) {
+    con2.query(`SELECT * FROM incoming where ID = ${id}`, function (error, results) {
         if (error) {
             res.send(error)
         }

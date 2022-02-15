@@ -22,17 +22,11 @@
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Customer ID</th>
-                    <th scope="col">Scheme ID</th>
-        
-                    <th scope="col">Name</th>
-                    <th scope="col">Scheme Name</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Received form</th>
                     <th scope="col">Amount</th>
-                    <th scope="col">Remaining Amount</th>
-                    <th scope="col">Number of installment</th>
-                    <th scope="col">Remaining Installment</th>
-                    <th scope="col">Installment Amount</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Reason</th>
                     <th scope="col">Action</th>
                     <th></th>
                 </tr>
@@ -41,23 +35,19 @@
         
                 <% print.forEach(function (user) { %>
                 <tr>
-                    <td><%= user.cus_id %></td>
-                    <td><%= user.scheme_id %></td>
-        
-                    <td><%= user.cus_name %></td>
-                    <td><%= user.scheme_name %></td>
-                    <td><%= user.scheme_amount %></td>
-                    <td><%= user.remaining_amount %></td>
-                    <td><%= user.installment_no %></td>
-                    <td><%= user.installment_remaining %></td>
-                    <td><%= user.installment_amount %></td>
-                    <td><%= user.date %></td>
+                    <td><%= user.ID %></td>
+                    <td><%= user.Receivedfrom %></td>
+                    <td><%= user.Amount %></td>
+                    <td><%= user.Date %></td>
+                    <td><%= user.Reason %></td>
+            
                     <td>
-                        <a href="/installment2/<%=user.cus_id %>" class="btn btn-primary" <% var id  = user.cus_id %></a>Pay</a>
+                        <a href="/incoming_action/<%=user.ID %>"  class="btn btn-primary"<% var id  = user.scheme_id %></a>Edit</a>
+        
                     </td>
                     <td>
-                        <a href="/invoice/<%=user.cus_id %>" class="btn btn-success">Invoice</a>
-        
+                        <a href="/delete_incoming/<%=user.ID %>" onclick="return confirm('Are You Sure?');" class="btn btn-danger">Delete</a>
+
                     </td>
         
                     <% }) %>
