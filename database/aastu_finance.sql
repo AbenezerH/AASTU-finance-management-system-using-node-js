@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2022 at 02:10 AM
+-- Generation Time: Feb 15, 2022 at 04:34 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `in-coming`
+-- Table structure for table `incoming`
 --
 
-CREATE TABLE `in-coming` (
+CREATE TABLE `incoming` (
   `ID` int(20) NOT NULL,
   `Received-from` varchar(50) NOT NULL,
   `Amount` double NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE `in-coming` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `in-coming`
+-- Dumping data for table `incoming`
 --
 
-INSERT INTO `in-coming` (`ID`, `Received-from`, `Amount`, `Date`, `Reason`) VALUES
+INSERT INTO `incoming` (`ID`, `Received-from`, `Amount`, `Date`, `Reason`) VALUES
 (1, 'Ministry of Science and Higher Education', 50000000, '2022-01-01', 'The year budget from the ministry of Science and Higher Education for the 2014 ec calendar year'),
 (2, 'Ministry of Water Irrigation and Energy', 560000, '2022-01-11', 'The payments received by AASTU for the collaborative development of power management software '),
 (3, 'Ethiopian Space Science and Technology Institute', 625000, '2021-09-01', 'The payments received by AASTU for the collaborative development of a drone hardware and control software system'),
@@ -49,10 +49,10 @@ INSERT INTO `in-coming` (`ID`, `Received-from`, `Amount`, `Date`, `Reason`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `out-going`
+-- Table structure for table `outgoing`
 --
 
-CREATE TABLE `out-going` (
+CREATE TABLE `outgoing` (
   `ID` int(20) NOT NULL,
   `Made-to` varchar(50) NOT NULL,
   `Amount` double NOT NULL,
@@ -61,10 +61,10 @@ CREATE TABLE `out-going` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `out-going`
+-- Dumping data for table `outgoing`
 --
 
-INSERT INTO `out-going` (`ID`, `Made-to`, `Amount`, `Date`, `Reason`) VALUES
+INSERT INTO `outgoing` (`ID`, `Made-to`, `Amount`, `Date`, `Reason`) VALUES
 (1, 'Ethio-telecom', 100000, '2022-02-08', 'The payment for ethio-telecom for the wifi connection'),
 (2, 'Dr. Brad James', 80000, '2021-12-01', 'The research grant released to Dr. Brad James for the research on construction materials'),
 (3, 'AASTU human resource management', 1000000, '2022-02-07', 'The payroll payment for the staff made to the AASTU Human Resource department to be paid to staff'),
@@ -79,15 +79,15 @@ INSERT INTO `out-going` (`ID`, `Made-to`, `Amount`, `Date`, `Reason`) VALUES
 
 CREATE TABLE `users` (
   `ID` int(20) NOT NULL,
-  `User-name` varchar(30) NOT NULL,
-  `Password` varchar(50) NOT NULL
+  `username` varchar(30) NOT NULL,
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `User-name`, `Password`) VALUES
+INSERT INTO `users` (`ID`, `username`, `password`) VALUES
 (1, 'admin', 'admin');
 
 --
@@ -95,15 +95,9 @@ INSERT INTO `users` (`ID`, `User-name`, `Password`) VALUES
 --
 
 --
--- Indexes for table `in-coming`
+-- Indexes for table `outgoing`
 --
-ALTER TABLE `in-coming`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `out-going`
---
-ALTER TABLE `out-going`
+ALTER TABLE `outgoing`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -117,15 +111,9 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `in-coming`
+-- AUTO_INCREMENT for table `outgoing`
 --
-ALTER TABLE `in-coming`
-  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `out-going`
---
-ALTER TABLE `out-going`
+ALTER TABLE `outgoing`
   MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
