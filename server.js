@@ -442,29 +442,6 @@ app.get('/scheme_action/:id', auth, function (req, res) {
 
 
 
-// // send updated data from scheme_action to database
-// app.post('/scheme_action', auth, (req, res) => {
-//     // sending all data as object
-
-
-//     // console.log(req.params.id);
-//     //var date = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
-//     var id = req.body.id;
-//     var name = req.body.name;
-//     var amount = req.body.Amount;
-//     var r_asset = req.body.r_asset;
-//     var no_installment =  req.body.Installment;
-//     var duration =  req.body.Duration;
-//     // "scheme": req.body.scheme,
-
-
-//     con.query(`UPDATE scheme SET name = '${name}', amount = '${amount}', r_asset = '${r_asset}', no_installment = '${no_installment}', duration = '${duration}' WHERE scheme_id = ${id}`, function (error, results) {
-//         if (error) throw res.send(error);
-//         res.redirect("/view_scheme");
-//     })
-// })
-
-
 // send updated data from scheme_action once the update button is pressed to database
 app.post('/scheme_action', auth, (req, res) => {
     // sending all data as object
