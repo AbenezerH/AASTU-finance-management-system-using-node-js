@@ -413,6 +413,36 @@ app.get("/view_scheme", auth, (req, res) => {
 });
 
 
+
+// the incoming entity adding page
+
+app.post('/incoming', auth, (req, res) => {
+    // sending all data as object
+    var date = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+
+    const data = {
+        "Receivedfrom": req.body.name,
+        "Amount": req.body.Amount,
+        "Date" : date,
+        "Reason" : req.body.r_asset,
+    }
+
+    //    query for inserting data
+    con2.query('INSERT INTO incoming SET ?', data, function (error, results, fields) {
+        if (error) throw res.send(error)
+        res.redirect("/index");
+       
+    });
+});
+
+
+//render sceheme file
+app.get('/incoming', auth, (req, res) => {
+    res.render('incoming.ejs')
+
+});
+
+
 // edit the edit btn in the scheme_action/
 app.get('/scheme_action/:id', auth, function (req, res) {
 
@@ -630,36 +660,6 @@ app.get('/info/:sid/:cid', auth,(req,res)=>{
 // get customer name
 
 
-// // send data from database to the table of view_loan
-// app.get("/view_loan", auth, (req, res) => {
-//     //   res.render('cus_view.ejs')
-//     var obj3 = {};
-//     var customer ={};
-//     con.query('SELECT customer.cus_id, customer.cus_name, scheme.scheme_id, scheme.name, scheme.amount, scheme.no_installment, loan_info.remaining_amount, loan_info.installment_remaining,loan_info.installment_amount,loan_info.date FROM((scheme INNER JOIN customer ON scheme.scheme_id = customer.scheme_id) INNER JOIN loan_info ON customer.cus_id = loan_info.cus_id)', function (err, result) {
-
-//         if (err) {
-//             throw err;
-//         } else {
-//        // console.log(result);
-//             obj3 = { print: result };
-//             res.render('view_loan.ejs', obj3);
-//         }
-//         // con.query('select * from customer',function (error,results,fields) {
-//         //     if(error) {
-//         //         res.send(error);
-//         //     }
-//         //     else{
-//         //         obj3 = { print1: result };
-//         //         res.render('view_loan.ejs', obj3);
-//         //     }
-            
-//         // })
-//     });
-
-
-// });
-
-
 // view loan/incoming table connect to database
 
 // send data from database to the table of view_loan
@@ -676,16 +676,7 @@ app.get("/view_loan", auth, (req, res) => {
             obj3 = { print: result };
             res.render('view_loan.ejs', obj3);
         }
-        // con.query('select * from customer',function (error,results,fields) {
-        //     if(error) {
-        //         res.send(error);
-        //     }
-        //     else{
-        //         obj3 = { print1: result };
-        //         res.render('view_loan.ejs', obj3);
-        //     }
             
-        // })
     });
 
 
