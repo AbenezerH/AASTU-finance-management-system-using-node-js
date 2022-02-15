@@ -371,26 +371,47 @@ app.post('/cus_register',auth, (req, res) => {
    
 });
   
-// add schemes
+// // add schemes
+// app.post('/scheme', auth, (req, res) => {
+//     // sending all data as object
+//     var date = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+//     var amount = req.body.Amount;
+//     var install  = req.body.instl;
+//     var install_amount  = Math.round(amount/install);
+
+//     const data = {
+//         "name": req.body.name,
+//         "Amount": req.body.Amount,
+//         "r_asset" : req.body.r_asset,
+//         "no_installment": req.body.instl,
+//         "install_amount": install_amount,
+//         "duration": req.body.Duration,
+//         date
+
+//     }
+//     //    query for inserting data
+//     con.query('INSERT INTO scheme SET ?', data, function (error, results, fields) {
+//         if (error) throw res.send(error)
+//         res.redirect("/index");
+       
+//     });
+// });
+
+
+// edit the add going out expense part
 app.post('/scheme', auth, (req, res) => {
     // sending all data as object
     var date = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
-    var amount = req.body.Amount;
-    var install  = req.body.instl;
-    var install_amount  = Math.round(amount/install);
 
     const data = {
-        "name": req.body.name,
+        "Madeto": req.body.name,
         "Amount": req.body.Amount,
-        "r_asset" : req.body.r_asset,
-        "no_installment": req.body.instl,
-        "install_amount": install_amount,
-        "duration": req.body.Duration,
-        date
-
+        "Date" : date,
+        "Reason" : req.body.r_asset,
     }
+
     //    query for inserting data
-    con.query('INSERT INTO scheme SET ?', data, function (error, results, fields) {
+    con2.query('INSERT INTO outgoing SET ?', data, function (error, results, fields) {
         if (error) throw res.send(error)
         res.redirect("/index");
        
@@ -398,12 +419,31 @@ app.post('/scheme', auth, (req, res) => {
 });
 
 
-// render view_scheme 
+// // render view_scheme 
+// app.get("/view_scheme", auth, (req, res) => {
+//     //   res.render('cus_view.ejs')
+//     // send data from databse to table
+//     var view_scheme= {};
+//     con.query('SELECT * FROM scheme', function (error, result) {
+        
+//         if (error) {
+//             throw error;
+//         } else {
+//            // console.log(result);
+            
+//             view_scheme = { print: result };
+//             res.render('view_scheme.ejs', view_scheme);
+//         }
+//     });
+// });
+
+
+// view scheme/outgoing also updated
 app.get("/view_scheme", auth, (req, res) => {
     //   res.render('cus_view.ejs')
     // send data from databse to table
     var view_scheme= {};
-    con.query('SELECT * FROM scheme', function (error, result) {
+    con2.query('SELECT * FROM outgoing', function (error, result) {
         
         if (error) {
             throw error;
@@ -415,6 +455,8 @@ app.get("/view_scheme", auth, (req, res) => {
         }
     });
 });
+
+
 
 // send data from database to scheme_action page
 app.get('/scheme_action/:id', auth, function (req, res) {

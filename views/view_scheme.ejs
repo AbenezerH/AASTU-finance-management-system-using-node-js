@@ -100,11 +100,11 @@
 
 <% print.forEach(function (user) { %>
     <tr>
-    <td><%= user.scheme_id %></td>
-    <td><%= user.name %></td>
-    <td><%= user.amount %></td>
-    <td><%= user.date %></td>
-    <td><%= user.r_asset %></td>
+    <td><%= user.ID %></td>
+    <td><%= user.Madeto %></td>
+    <td><%= user.Amount %></td>
+    <td><%= user.Date %></td>
+    <td><%= user.Reason %></td>
     <td>
         <a href="/scheme_action/<%=user.scheme_id %>"  class="btn btn-primary"<% var id  = user.scheme_id %></a>Edit</a>
         
