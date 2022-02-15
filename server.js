@@ -61,6 +61,14 @@ var con = mysql.createConnection({
     database: 'mydb'
 })
 
+// database new one
+var con2 = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'aastu_finance'
+})
+
 
 // set up routing and view 
 app.set('view-engine', 'ejs')
