@@ -566,6 +566,35 @@ app.get('/delete_scheme/:id', auth, (req, res) => {
 })
 
 
+// delete the incoming entry
+
+app.get('/delete_incoming/:id', auth, (req, res) => {
+    // sending all data as object
+
+    var delid = req.params.id;
+    
+    // console.log(did);
+    con2.query(`select * from incoming where ID = ${delid}`, function (error, results) {
+        if (error) {
+            throw error;
+        }
+        else {
+
+            con2.query(`delete from incoming where ID = ${delid}`, function (error, results) {
+                if (error) {
+                    throw error;
+                }
+                else {
+                    // window.alert("Deleted Successfully")
+                    res.redirect("/view_loan")
+                }
+            })
+
+        }
+    
+    })
+})
+
 
 
 // view customer details in table 
