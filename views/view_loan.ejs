@@ -119,11 +119,11 @@
                     <td><%= user.Reason %></td>
 
                     <td>
-                        <a href="/installment2/<%=user.cus_id %>" class="btn btn-primary"
-                            <% var id  = user.cus_id %></a>Pay</a>
-                    </td>
+                        <a href="/scheme_action/<%=user.ID %>"  class="btn btn-primary"<% var id  = user.scheme_id %></a>Edit</a>
+        
+                            </td>
                     <td>
-                        <a href="/invoice/<%=user.cus_id %>" class="btn btn-success">Invoice</a>
+                        <a href="/delete_scheme/<%=user.ID %>" onclick="return confirm('Are You Sure?');" class="btn btn-danger">Delete</a>
 
                     </td>
 
